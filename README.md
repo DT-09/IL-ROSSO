@@ -8,7 +8,7 @@
 - Three.js / React Three Fiber / Drei for the interactive concept-car study
 - Motion for transitions and stateful storytelling
 - GSAP is available for future scroll choreography
-- Vercel for deployment
+- Cloudflare Pages for hosting and continuous deployment
 
 ## Run locally
 
@@ -17,6 +17,17 @@ npm install
 npm run dev
 npm run build
 ```
+
+## Cloudflare Pages deployment
+
+1. In Cloudflare, open **Workers & Pages → Create → Pages → Connect to Git**.
+2. Select `DT-09/IL-ROSSO`.
+3. Set the production branch to `main` (or the repository's default branch).
+4. Build command: `npm run build`.
+5. Build output directory: `dist`.
+6. Framework preset: **Vite**. No environment variables are required for the current app.
+
+Every push to the connected production branch will trigger a new deployment. The `public/_redirects` file preserves SPA route fallback on Cloudflare Pages.
 
 ## Experience architecture
 
@@ -31,7 +42,3 @@ npm run build
 This is an independent fan-made project and is not affiliated with or endorsed by Ferrari S.p.A. or Formula 1. Do not assume third-party photographs, logos, car designs, video, or sound are free to reuse. Replace any reference imagery with assets you own, have permission to use, or have verified licenses for before public promotion. The 3D vehicle is an original illustrative model, not an official Ferrari CAD model. Strategy outputs are hypothetical and do not use team telemetry.
 
 Historical entries are intentionally concise. Expand the archive only with source-verified facts and documented image rights. Avoid presenting illustrative diagrams or simulated values as official data.
-
-## Deployment
-
-Import `DT-09/IL-ROSSO` into Vercel, use the Vite preset, set build command to `npm run build`, and output directory to `dist`. The included `vercel.json` supports SPA route fallback. Connect the production branch to enable deployments on each push.
