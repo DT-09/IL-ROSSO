@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react'
-import { ArrowDown, ArrowRight, ChevronLeft, ChevronRight, ExternalLink, Menu, Pause, Play, RotateCcw, Volume2, VolumeX, X } from 'lucide-react'
+import { ArrowDown, ArrowRight, ChevronLeft, ChevronRight, ExternalLink, Menu, Pause, Play, X } from 'lucide-react'
 import './styles.css'
 
 const ASSETS = {
@@ -27,7 +27,6 @@ const aeroModes = [
 ]
 function App() {
   const [menuOpen,setMenuOpen]=useState(false)
-  const [sound,setSound]=useState(false)
   const [videoPaused,setVideoPaused]=useState(false)
   const [activeChapter,setActiveChapter]=useState(3)
   const [activeAero,setActiveAero]=useState('downforce')
@@ -54,12 +53,12 @@ function App() {
     <header className={scrolled?'topbar topbar-scrolled':'topbar'}>
       <a className="brand" href="#home" onClick={closeMenu} aria-label="IL ROSSO home"><img src={ASSETS.ferrariWordmark} alt="Ferrari wordmark" className="ferrari-wordmark" /><span className="brand-divider"/><span className="brand-label">IL ROSSO<small>AN INDEPENDENT TRIBUTE</small></span></a>
       <nav className={menuOpen?'nav-links nav-open':'nav-links'} aria-label="Main navigation">{nav.map(([n,label,href])=><a key={n} href={href} onClick={closeMenu}><span>{n}</span>{label}</a>)}</nav>
-      <div className="top-actions"><button className="sound-button" onClick={()=>setSound(!sound)} aria-label={sound?'Mute video':'Enable video sound'}>{sound?<Volume2 size={15}/>:<VolumeX size={15}/>}<span>{sound?'SOUND ON':'SOUND OFF'}</span></button><button className="menu-button" aria-label={menuOpen?'Close navigation':'Open navigation'} onClick={()=>setMenuOpen(!menuOpen)}>{menuOpen?<X/>:<Menu/>}</button></div>
+      <div className="top-actions"><a className="sound-button official-film-link" href="https://www.youtube.com/@ScuderiaFerrari" target="_blank" rel="noreferrer"><span>OFFICIAL FILM ↗</span></a><button className="menu-button" aria-label={menuOpen?'Close navigation':'Open navigation'} onClick={()=>setMenuOpen(!menuOpen)}>{menuOpen?<X/>:<Menu/>}</button></div>
     </header>
     <main>
       <section className="hero" id="home" ref={heroRef}>
-        <motion.div className="hero-video-layer" style={{y:heroY,scale:heroScale}}>
-          <iframe title="Scuderia Ferrari SF-26 — official Ferrari film" src={videoPaused ? 'about:blank' : 'https://www.youtube-nocookie.com/embed/'+officialVideo+'?autoplay=1&mute='+(sound?'0':'1')+'&controls=0&loop=1&playlist='+officialVideo+'&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3'} allow="autoplay; encrypted-media; picture-in-picture" referrerPolicy="strict-origin-when-cross-origin" />
+        <motion.div className="hero-video-layer hero-image-layer" style={{y:videoPaused?0:heroY,scale:videoPaused?1:heroScale}}>
+          <img className="hero-image" src={ASSETS.sf26Track} alt="Scuderia Ferrari SF-26 in motion, from Formula 1's media gallery" fetchPriority="high" onError={e=>{const img=e.currentTarget;if(img.dataset.fallback!=='1'){img.dataset.fallback='1';img.src=ASSETS.sf26Studio}else{img.style.display='none'}}}/>
         </motion.div>
         <div className="hero-shade"/><div className="hero-vignette"/>
         <div className="hero-topline"><span><i className="live-dot"/> SCUDERIA FERRARI / A LIVING RACING HISTORY</span><span>MARANELLO · ITALIA</span></div>
