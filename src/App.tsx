@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Environment, Float, OrbitControls, ContactShadows } from '@react-three/drei'
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react'
@@ -12,7 +12,7 @@ const ASSETS = {
   sf26Alt: 'https://media.formula1.com/image/upload/c_fit,w_2400,h_1350/q_auto/v1740000001/fom-website/2026/Ferrari/F678_still_f01_16_9_v10.webp',
   sf26Detail: 'https://media.formula1.com/image/upload/c_fit,w_1800,h_1200/q_auto/v1740000001/fom-website/2026/Ferrari/F678_still_f04_16_9_v10.webp',
   ferrariWordmark: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ferrari%20wordmark.svg',
-  tifosi: 'https://media.formula1.com/image/upload/ar_16:9,c_fill/c_fit,w_3200,h_1800/q_auto/v1740000001/trackside-images/2025/F1_Grand_Prix_of_Italy/2234148740.webp',
+  tifosi: 'https://media.formula1.com/image/upload/ar_16%3A9%2Cc_fill/c_fit%2Cw_3200%2Ch_1800/q_auto/v1740000001/trackside-images/2025/F1_Grand_Prix_of_Italy/2234148740.webp',
   enduranceVideo: 'https://www.youtube.com/watch?v=e087nzfYJpc',
 }
 const officialVideo = 'muAlUVvOqwE'
@@ -77,7 +77,6 @@ function App() {
   const [activeAero,setActiveAero]=useState('pressure')
   const [saved,setSaved]=useState<string[]>([])
   const [galleryOpen,setGalleryOpen]=useState<number|null>(null)
-  const [activeDiscipline,setActiveDiscipline]=useState('f1')
   const [scrolled,setScrolled]=useState(false)
   const heroRef=useRef<HTMLElement>(null)
   const {scrollYProgress}=useScroll({target:heroRef,offset:['start start','end start']})
