@@ -12,7 +12,6 @@ const ASSETS = {
   tifosi: 'https://media.formula1.com/image/upload/ar_16%3A9%2Cc_fill/c_fit%2Cw_3200%2Ch_1800/q_auto/v1740000001/trackside-images/2025/F1_Grand_Prix_of_Italy/2234148740.webp',
   enduranceVideo: 'https://www.youtube.com/watch?v=e087nzfYJpc',
 }
-const officialVideo = 'muAlUVvOqwE'
 const chapters = [
   { year:'1950', title:'A name enters the world championship', sub:'The first start', copy:'At Monaco, Scuderia Ferrari began its Formula One World Championship story. The beginning was not a finished legend; it was a commitment to keep competing.', tag:'THE BEGINNING', image:ASSETS.sf26Alt, accent:'#d7b56d' },
   { year:'1961', title:'A season that changed the team', sub:'Speed and sacrifice', copy:'The 1961 campaign brought a constructors’ title and a drivers’ championship, while the season also carried profound loss. Ferrari history has never been only about the trophies.', tag:'A DEFINING YEAR', image:ASSETS.sf26Studio, accent:'#e8d5ac' },
