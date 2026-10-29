@@ -4,6 +4,7 @@ import { Environment, Float, OrbitControls, ContactShadows } from '@react-three/
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react'
 import { ArrowDown, ArrowRight, ChevronLeft, ChevronRight, ExternalLink, Menu, Pause, Play, RotateCcw, Volume2, VolumeX, X } from 'lucide-react'
 import type { Group, Mesh, MeshBasicMaterial } from 'three'
+import type { Group, Mesh, MeshBasicMaterial } from 'three'
 import './styles.css'
 
 const ASSETS = {
@@ -46,8 +47,8 @@ function Streamlines({ active }: { active: string }) {
   })
   return <group ref={refs}>{particles.map((p,i)=><mesh key={i} position={[p.x,p.y,p.z]}><sphereGeometry args={[active==='vortices'?.035:.022,8,8]}/><meshBasicMaterial color={active==='drs'?'#e9c78a':i%3===0?'#ff4b3e':'#f4eee4'} transparent opacity={.7}/></mesh>)}</group>
 }
-function AeroCar({ active }: { active: string }) {
-  const car = useRef<THREE.Group>(null)
+function AeroCar() {
+  const car = useRef<Group>(null)
   useFrame(({clock}) => { if(car.current) { car.current.rotation.y = Math.sin(clock.elapsedTime*.22)*.12; car.current.position.y = Math.sin(clock.elapsedTime*.8)*.025 } })
   const red = '#c8102e'
   return <group ref={car} rotation={[0,.1,0]} scale={.88}>
@@ -65,7 +66,7 @@ function AeroCar({ active }: { active: string }) {
 function WindTunnel({ active }: { active:string }) {
   return <Canvas camera={{position:[3.5,2.6,4.2],fov:39}} dpr={[1,1.5]} gl={{antialias:true,alpha:true}}>
     <ambientLight intensity={.75}/><spotLight position={[3,6,3]} intensity={75} angle={.45} penumbra={.8} castShadow/><pointLight position={[-4,1,-2]} color="#e10600" intensity={12}/><pointLight position={[0,2,4]} color="#d5b77b" intensity={4}/>
-    <Float speed={.7} rotationIntensity={.04} floatIntensity={.08}><AeroCar active={active}/></Float><Streamlines active={active}/>
+    <Float speed={.7} rotationIntensity={.04} floatIntensity={.08}><AeroCar/></Float><Streamlines active={active}/>
     <ContactShadows position={[0,-.36,0]} opacity={.48} scale={6} blur={2.4} far={2}/><Environment preset="city"/><OrbitControls enablePan={false} minDistance={3.2} maxDistance={7} minPolarAngle={.65} maxPolarAngle={1.5} autoRotate autoRotateSpeed={.25}/>
   </Canvas>
 }
