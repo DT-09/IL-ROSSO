@@ -4,7 +4,6 @@ import { Environment, Float, OrbitControls, ContactShadows } from '@react-three/
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react'
 import { ArrowDown, ArrowRight, ChevronLeft, ChevronRight, ExternalLink, Menu, Pause, Play, RotateCcw, Volume2, VolumeX, X } from 'lucide-react'
 import type { Group, Mesh, MeshBasicMaterial } from 'three'
-import type { Group, Mesh, MeshBasicMaterial } from 'three'
 import './styles.css'
 
 const ASSETS = {
