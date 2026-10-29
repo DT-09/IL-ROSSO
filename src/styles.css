@@ -15,3 +15,56 @@
 @media(max-width:820px){.topbar{height:72px;padding:0 22px}.brand{min-width:0}.ferrari-wordmark{width:66px}.brand-label{font-size:9px}.sound-button span{display:none}.menu-button{display:flex}.nav-links{display:none;position:absolute;top:71px;left:0;right:0;padding:20px 24px 28px;background:rgba(7,7,7,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);grid-template-columns:1fr 1fr;gap:0 20px}.nav-links.nav-open{display:grid}.nav-links a{font-size:9px;padding:15px 0;border-bottom:1px solid var(--line)}.nav-links a span{display:inline;color:#d2b67f}.hero{min-height:680px;height:92svh}.hero-topline{top:98px;font-size:7px}.hero-topline span:last-child{display:none}.hero-copy{padding-top:120px}.hero h1{font-size:clamp(64px,15vw,120px)}.hero-baseline{margin-top:27px}.hero-bottom{font-size:7px;gap:10px}.hero-bottom span:nth-child(2){display:none}.hero-bottom button{font-size:7px}.hero-index{right:20px}.hero-side-note{display:none}.section-pad{padding-top:78px;padding-bottom:78px}.manifesto-grid,.discipline-hero,.endurance-layout,.tifosi-story,.film-feature,.collection-layout{grid-template-columns:1fr;gap:34px}.manifesto-grid{padding-top:45px}.manifesto-body{max-width:600px}.manifesto-foot{margin-top:55px}.discipline-image-wrap,.discipline-image-wrap img{min-height:300px}.photo-strip{gap:8px}.photo-strip figcaption{flex-direction:column;gap:4px;font-size:6px}.section-heading{display:block;padding-top:40px}.section-intro{margin-top:23px}.wind-stage{height:360px}.wind-readout{grid-template-columns:1fr 130px;padding:20px;gap:20px}.wind-metric{padding-left:15px}.reset-button{grid-column:1/-1}.archive-layout{grid-template-columns:1fr;gap:28px}.era-rail{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.era-rail-label{grid-column:1/-1}.era-tab{grid-template-columns:1fr;gap:7px;padding:13px 5px}.era-year{font-size:17px}.era-tab-title{font-size:6px;min-height:28px}.era-dot{justify-self:start}.archive-note{display:none}.era-feature{min-height:0}.era-photo{min-height:360px}.era-feature-copy{padding:24px 20px}.endurance-bottom{flex-wrap:wrap;justify-content:center;font-size:7px}.tifosi-hero{height:530px}.tifosi-message{left:25px;right:25px}.tifosi-vertical{right:10px}.gallery-grid{grid-template-columns:1fr 1fr}.gallery-card img{height:270px}.film-feature-image{grid-row:1}.footer{grid-template-columns:1fr 1fr}.footer>p{grid-column:1/-1;grid-row:2}.footer-right{grid-column:2;grid-row:1}.closing{height:500px}}
 @media(max-width:520px){.section-pad{padding:65px 20px}.topbar{padding:0 18px}.brand{gap:9px}.ferrari-wordmark{width:56px}.brand-divider{height:24px}.brand-label{font-size:8px}.brand-label small{font-size:6px}.hero{min-height:650px;height:92svh}.hero-topline{left:20px;right:20px;top:91px;letter-spacing:.07em}.hero-copy{padding:100px 20px 90px}.hero h1{font-size:17vw}.hero-baseline p{font-size:12px}.hero-cta{margin-top:30px}.hero-bottom{left:20px;right:20px;bottom:22px;align-items:flex-end}.hero-bottom span:first-child{max-width:110px;line-height:1.7}.hero-bottom button{max-width:145px;line-height:1.6;text-align:left}.manifesto-grid h2{font-size:49px}.manifesto-foot{gap:10px;font-size:6px;letter-spacing:.04em}.discipline-image-wrap,.discipline-image-wrap img{min-height:240px}.photo-strip{grid-template-columns:1fr 1fr}.photo-strip figure:last-child{display:none}.photo-strip img{height:150px}.discipline-facts strong{font-size:34px}.section-heading h2,.discipline-copy h2,.endurance-copy h2,.film-feature-copy h2,.collection-layout h2{font-size:48px}.wind-head{flex-wrap:wrap;font-size:7px}.wind-head span:nth-child(2){order:3;width:100%}.wind-stage{height:320px}.wind-callout{right:13px;top:15px}.wind-callout strong{font-size:15px}.wind-axis{left:13px;top:14px}.wind-legend{left:13px;bottom:13px;flex-direction:column;gap:7px}.wind-controls{grid-template-columns:1fr}.wind-tab{border-right:0;border-bottom:1px solid #302b27;padding:15px}.wind-tab:last-child{border-bottom:0}.wind-readout{grid-template-columns:1fr}.wind-metric{border-left:0;border-top:1px solid var(--line);padding:15px 0 0}.reset-button{grid-column:auto}.aero-principles{grid-template-columns:1fr;gap:20px}.era-rail{gap:3px}.era-tab{padding:10px 3px}.era-year{font-size:15px}.era-tab-title{font-size:5.5px;letter-spacing:0}.era-feature{grid-template-columns:1fr}.era-photo{min-height:260px}.era-feature-copy{min-height:320px}.history-link{align-items:flex-start;flex-direction:column}.tifosi-hero{height:480px}.tifosi-image-overlay{background:linear-gradient(90deg,#090909d9,#09090958 80%),linear-gradient(0deg,#090909a6,transparent)}.tifosi-message h2{font-size:53px}.tifosi-vertical{font-size:6px}.tifosi-story{padding:35px 0}.tifosi-quote{padding-top:55px}.gallery-grid{gap:8px}.gallery-card img{height:205px}.gallery-caption{left:10px;right:8px;bottom:12px}.gallery-caption b{font-size:8px}.gallery-caption small{font-size:6px}.gallery-footer{flex-direction:column;align-items:flex-start;line-height:1.8}.film-feature{gap:25px}.collection-panel{padding:15px}.closing{height:430px}.closing-copy{padding:0 20px}.closing h2{font-size:64px}.footer{grid-template-columns:1fr;padding:25px 20px;gap:20px}.footer-right{grid-column:1;grid-row:auto;align-items:flex-start}.footer>p{grid-column:1;grid-row:auto}.lightbox{padding:50px 15px}.lightbox-prev{left:6px}.lightbox-next{right:6px}.lightbox>img{max-height:72vh}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.hero-video-layer{display:none}.hero{background:#100c0b url('https://media.formula1.com/image/upload/c_fit,w_2400,h_1350/q_auto/v1740000001/fom-website/2026/Ferrari/F678_still_f03_16_9_v10.webp') center/cover no-repeat}}
+
+
+/* IL ROSSO — visual escalation */
+:root{--rosso:#e10600}
+.hero{background:#080707}
+.hero h1 em{color:#e10600!important;text-shadow:0 8px 44px #e1060038}
+.hero h1{letter-spacing:-.055em;font-size:clamp(82px,13.5vw,205px);line-height:.78}
+.hero-copy{max-width:1200px}
+.hero .hero-baseline{border-left:1px solid #e10600;padding-left:18px}
+.topbar-scrolled{border-bottom-color:#e1060066}
+.brand-label small{color:#e10600}
+.section-kicker,.eyebrow{color:#e10600}
+.text-link:hover,.gallery-footer a:hover,.history-link a:hover{color:#ff4a40}
+.discipline-image-wrap,.tifosi-hero,.closing,.aero-real-image{isolation:isolate}
+.discipline-image-wrap img,.photo-strip img,.era-photo img,.gallery-card img,.tifosi-photo img,.closing>img,.film-feature-image img,.endurance-film img{background:#181311}
+.discipline-image-wrap img,.photo-strip img,.gallery-card img{transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .5s}
+.discipline-image-wrap:hover img,.photo-strip figure:hover img{transform:scale(1.035);filter:saturate(1.1) contrast(1.04)}
+.photo-strip{gap:18px;margin-top:30px}
+.photo-strip img{height:clamp(190px,24vw,330px)}
+.endurance{position:relative;overflow:hidden}
+.endurance:before{content:"499P";position:absolute;right:-.04em;top:15%;font:clamp(140px,28vw,430px)/.8 var(--serif);color:#ffffff05;pointer-events:none}
+.manifesto-grid h2 em,.discipline-copy h2 em,.endurance-copy h2 em,.section-heading h2 em,.closing h2 em,.tifosi-message h2 em{color:#e10600}
+.aero-editorial-feature{display:grid;grid-template-columns:1.42fr .78fr;min-height:590px;margin-top:38px;border:1px solid #3b3029;background:#0c0b0a}
+.aero-real-image{position:relative;min-height:590px;overflow:hidden;background:#1b1210}
+.aero-real-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.85) contrast(1.08);transition:transform 1.1s}
+.aero-editorial-feature:hover .aero-real-image img{transform:scale(1.025)}
+.aero-photo-shade{position:absolute;inset:0;background:linear-gradient(0deg,#070707c9 0%,transparent 38%),linear-gradient(90deg,#09090930,transparent 60%)}
+.aero-photo-caption{position:absolute;left:28px;right:28px;bottom:25px;display:flex;justify-content:space-between;font:8px var(--mono);letter-spacing:.13em;color:#f4eee4}
+.aero-photo-number{position:absolute;top:25px;left:28px;font:clamp(70px,9vw,130px)/.8 var(--serif);color:#f4eee4;opacity:.88}
+.aero-editorial-side{padding:clamp(25px,3vw,48px);display:flex;flex-direction:column;align-items:flex-start}
+.aero-side-index{font:8px var(--mono);letter-spacing:.12em;color:#9b8d7b}
+.aero-editorial-side h3{font:clamp(36px,4vw,57px)/.98 var(--serif);font-weight:400;letter-spacing:-.03em;margin:35px 0 17px}
+.aero-editorial-side h3 em{color:#e10600}
+.aero-editorial-side>p{font-size:12px;line-height:1.9;color:#b5aa9d;margin:0 0 28px}
+.aero-mode-list{width:100%;margin-top:auto;border-top:1px solid var(--line)}
+.aero-mode{width:100%;display:grid;grid-template-columns:34px 1fr 18px;align-items:center;gap:10px;padding:16px 0;background:transparent;border:0;border-bottom:1px solid var(--line);text-align:left;cursor:pointer;color:#93877a}
+.aero-mode>span:first-child{font:8px var(--mono);color:#d1b77e}
+.aero-mode b{font:14px var(--serif);font-weight:400}
+.aero-mode-mark{font:17px var(--mono);text-align:right}
+.aero-mode.active,.aero-mode:hover{color:#f4eee4}
+.aero-mode.active .aero-mode-mark{color:#e10600}
+.aero-current{display:flex;flex-direction:column;gap:8px;padding-top:24px;width:100%}
+.aero-current span,.aero-current small{font:7px var(--mono);letter-spacing:.12em;color:#8d8275}
+.aero-current strong{font:24px var(--serif);font-weight:400;color:#e10600}
+.aero-principles{margin-top:42px}
+.aero-principles article{padding-top:20px}
+.aero-principles article>span{color:#e10600}
+.aero-principles h3{font-size:clamp(24px,2.5vw,34px)}
+.aero-source{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-top:34px;padding-top:20px;border-top:1px solid var(--line);font:8px var(--mono);letter-spacing:.1em;color:#928579}
+.aero-source a{display:flex;align-items:center;gap:10px;color:#e8d8c3}
+.aero-source a:hover{color:#e10600}
+@media(max-width:820px){.hero h1{font-size:clamp(72px,15.5vw,135px)}.aero-editorial-feature{grid-template-columns:1fr}.aero-real-image{min-height:420px}.aero-editorial-side{min-height:480px}.aero-photo-number{font-size:90px}.aero-source{align-items:flex-start;flex-direction:column}}
+@media(max-width:520px){.hero h1{font-size:17vw}.aero-real-image{min-height:300px}.aero-editorial-side{padding:23px;min-height:450px}.aero-photo-caption{left:15px;right:15px;bottom:16px;font-size:6px}.aero-photo-number{left:15px;top:18px;font-size:70px}.photo-strip{gap:8px}.photo-strip img{height:145px}}
