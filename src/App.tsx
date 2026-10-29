@@ -50,6 +50,14 @@ function GarageScene() {
     <OrbitControls enablePan={false} minDistance={3.4} maxDistance={7.5} minPolarAngle={.55} maxPolarAngle={1.65} autoRotate autoRotateSpeed={.45}/>
   </Canvas>
 }
+function RossoMark({ className = '' }: { className?: string }) {
+  return <svg className={className} viewBox="0 0 48 48" role="img" aria-label="IL ROSSO monogram" focusable="false">
+    <path className="rosso-crest" d="M24 2.8 42.2 9.6v15.1c0 9.7-7.6 16.3-18.2 20.5C13.4 41 5.8 34.4 5.8 24.7V9.6L24 2.8Z" fill="none" stroke="currentColor" strokeWidth="1.15"/>
+    <path d="M15 13.5h11.4c5.2 0 8 2.5 8 6.4 0 3-1.7 5.1-4.8 6l6.2 9h-7.2l-5.4-8.2h-2.1v8.2H15V13.5Zm6.1 5v3.5h5c1.5 0 2.2-.6 2.2-1.8s-.7-1.7-2.2-1.7h-5Z" fill="currentColor"/>
+    <path d="M11 39.2h26" stroke="#d20b12" strokeWidth="1.1"/>
+  </svg>
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [sound, setSound] = useState(false)
@@ -71,7 +79,7 @@ function App() {
   return <div className="site-shell">
     <div className="film-grain" aria-hidden="true"/>
     <header className="topbar">
-      <a className="wordmark" href="#home" onClick={closeMenu} aria-label="IL ROSSO home"><span className="wordmark-mark">I<span>R</span></span><span className="wordmark-type">IL ROSSO<small>LA PASSIONE NON FINISCE MAI</small></span></a>
+      <a className="wordmark" href="#home" onClick={closeMenu} aria-label="IL ROSSO home"><RossoMark className="wordmark-mark" /><span className="wordmark-type">IL ROSSO<small>LA PASSIONE NON FINISCE MAI</small></span></a>
       <nav className={menuOpen ? 'nav-links nav-open' : 'nav-links'} aria-label="Main navigation">
         {[['01','THE WORLD','#home'],['02','THE MACHINE','#machine'],['03','THE ARCHIVE','#archive'],['04','THE PIT WALL','#pitwall'],['05','THE TIFOSI','#tifosi']].map(([n,label,href])=><a key={n} href={href} onClick={closeMenu}><span>{n}</span>{label}</a>)}
       </nav>
@@ -94,7 +102,7 @@ function App() {
       <section className="manifesto section-pad">
         <div className="section-kicker"><span>01 — THE REASON</span><span>UNA FEDE, UNA STORIA</span></div>
         <div className="manifesto-grid"><h2>Some teams<br/>win races.<br/><em>Some become</em><br/><span>part of you.</span></h2><div className="manifesto-body"><p className="dropcap">There is a particular silence before the lights go out. A held breath across continents. Then the world turns red, and for a moment every detail matters.</p><p>IL ROSSO is an independent digital tribute to the machine, the minds behind it, the history that shaped it, and the people who never stopped believing. A place to look closer. To understand more. To remember why.</p><a className="text-link" href="#archive">FOLLOW THE THREAD <ArrowRight size={15}/></a></div></div>
-        <div className="manifesto-stamp"><span>SCUDERIA</span><b>F</b><span>FERRARI</span></div>
+        <div className="manifesto-stamp" aria-label="IL ROSSO original emblem"><RossoMark className="stamp-mark" /><span>IL ROSSO</span><small>TRIBUTE / 001</small></div>
       </section>
       <section className="machine section-pad" id="machine">
         <div className="section-kicker"><span>02 — THE MACHINE</span><span>FORM FOLLOWS FASTER</span></div>
@@ -126,7 +134,7 @@ function App() {
         <div className="closing-image"/><div className="closing-copy"><p className="eyebrow">THE NEXT CHAPTER IS ALWAYS AHEAD</p><h2>Still<br/><em>believing.</em></h2><a href="#home" className="discover-link"><span>RETURN TO THE BEGINNING</span><ArrowDown className="return-arrow" size={16}/></a></div><div className="closing-number">IL ROSSO / FINE</div>
       </section>
     </main>
-    <footer className="footer"><a className="footer-brand" href="#home">IL ROSSO<span>LA PASSIONE NON FINISCE MAI</span></a><p>An independent fan-made tribute to Scuderia Ferrari.<br/>Not affiliated with, endorsed by, or sponsored by Ferrari S.p.A. or Formula 1.</p><div className="footer-right"><span>BUILT WITH RESPECT.</span><a href="https://www.ferrari.com/" target="_blank" rel="noreferrer">FERRARI OFFICIAL SITE ↗</a><span>© {new Date().getFullYear()} IL ROSSO</span></div></footer>
+    <footer className="footer"><a className="footer-brand" href="#home"><RossoMark className="footer-mark" /><span className="footer-brand-type">IL ROSSO<small>LA PASSIONE NON FINISCE MAI</small></span></a><p>An independent fan-made tribute to Scuderia Ferrari.<br/>Not affiliated with, endorsed by, or sponsored by Ferrari S.p.A. or Formula 1.</p><div className="footer-right"><span>BUILT WITH RESPECT.</span><a href="https://www.ferrari.com/" target="_blank" rel="noreferrer">FERRARI OFFICIAL SITE ↗</a><span>© {new Date().getFullYear()} IL ROSSO</span></div></footer>
   </div>
 }
 export default App
