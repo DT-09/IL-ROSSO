@@ -3,6 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { Environment, Float, OrbitControls, ContactShadows } from '@react-three/drei'
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react'
 import { ArrowDown, ArrowRight, ChevronLeft, ChevronRight, ExternalLink, Menu, Pause, Play, RotateCcw, Volume2, VolumeX, X } from 'lucide-react'
+import type { Group, Mesh, MeshBasicMaterial } from 'three'
 import './styles.css'
 
 const ASSETS = {
@@ -11,6 +12,7 @@ const ASSETS = {
   sf26Alt: 'https://media.formula1.com/image/upload/c_fit,w_2400,h_1350/q_auto/v1740000001/fom-website/2026/Ferrari/F678_still_f01_16_9_v10.webp',
   sf26Detail: 'https://media.formula1.com/image/upload/c_fit,w_1800,h_1200/q_auto/v1740000001/fom-website/2026/Ferrari/F678_still_f04_16_9_v10.webp',
   ferrariWordmark: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ferrari%20wordmark.svg',
+  tifosi: 'https://media.formula1.com/image/upload/ar_16:9,c_fill/c_fit,w_3200,h_1800/q_auto/v1740000001/trackside-images/2025/F1_Grand_Prix_of_Italy/2234148740.webp',
   enduranceVideo: 'https://www.youtube.com/watch?v=e087nzfYJpc',
 }
 const officialVideo = 'muAlUVvOqwE'
@@ -27,7 +29,7 @@ const aeroModes = [
   { id:'drs', title:'Active aero', number:'03', label:'DRAG CONTROL', value:'LOW-DRAG MODE', copy:'Modern regulations use active aerodynamic modes. This switch illustrates the concept only; it does not represent the SF-26 mechanism or exact geometry.' },
 ]
 function Streamlines({ active }: { active: string }) {
-  const refs = useRef<THREE.Group>(null)
+  const refs = useRef<Group>(null)
   const particles = useMemo(() => Array.from({length:54},(_,i)=>({x:-3.5+(i%9)*.16,y:-.02+Math.floor(i/9)*.15,z:-2.5+(i%7)*.72,speed:.65+(i%5)*.17,phase:(i%13)/13})),[])
   useFrame(({clock}) => {
     if (!refs.current) return
@@ -37,8 +39,8 @@ function Streamlines({ active }: { active: string }) {
       child.position.x = -3.6+t
       child.position.y = p.y + Math.sin(t*1.6+p.z)*.08 + (active==='vortices' ? Math.sin(t*3+p.phase*9)*.13 : 0)
       child.position.z = p.z + (active==='drs' ? Math.sin(t*1.1)*.18 : 0)
-      const m = child as THREE.Mesh
-      const mat = m.material as THREE.MeshBasicMaterial
+      const m = child as Mesh
+      const mat = m.material as MeshBasicMaterial
       mat.opacity = .22 + .7*Math.sin((t/7)*Math.PI)
     })
   })
@@ -102,7 +104,7 @@ function App() {
     <main>
       <section className="hero" id="home" ref={heroRef}>
         <motion.div className="hero-video-layer" style={{y:heroY,scale:heroScale}}>
-          <iframe title="Scuderia Ferrari SF-26 — official Ferrari film" src={'https://www.youtube-nocookie.com/embed/'+officialVideo+'?autoplay=1&mute=1&controls=0&loop=1&playlist='+officialVideo+'&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3'} allow="autoplay; encrypted-media; picture-in-picture" referrerPolicy="strict-origin-when-cross-origin" />
+          <iframe title="Scuderia Ferrari SF-26 — official Ferrari film" src={videoPaused ? 'about:blank' : 'https://www.youtube-nocookie.com/embed/'+officialVideo+'?autoplay=1&mute='+(sound?'0':'1')+'&controls=0&loop=1&playlist='+officialVideo+'&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3'} allow="autoplay; encrypted-media; picture-in-picture" referrerPolicy="strict-origin-when-cross-origin" />
         </motion.div>
         <div className="hero-shade"/><div className="hero-vignette"/>
         <div className="hero-topline"><span><i className="live-dot"/> SCUDERIA FERRARI / A LIVING RACING HISTORY</span><span>MARANELLO · ITALIA</span></div>
@@ -112,7 +114,7 @@ function App() {
           <motion.div className="hero-baseline" initial={{opacity:0}} animate={{opacity:1}} transition={{delay:.7}}><span className="red-rule"/><p>Beyond the finish line.<br/>Beyond the generations.</p></motion.div>
           <motion.a className="hero-cta" href="#manifesto" initial={{opacity:0,y:12}} animate={{opacity:1,y:0}} transition={{delay:1}}><span>ENTER THE STORY</span><ArrowDown size={16}/></motion.a>
         </div>
-        <div className="hero-bottom"><span>F1 · WEC · CORSE CLIENTI</span><span>ONE NAME. MANY BATTLES.</span><button onClick={()=>setVideoPaused(!videoPaused)}>{videoPaused?<Play size={13}/>:<Pause size={13}/>} {videoPaused?'VIDEO IS EMBEDDED / USE PLAYER':'MOTION / CINEMATIC FILM'}</button></div>
+        <div className="hero-bottom"><span>F1 · WEC · CORSE CLIENTI</span><span>ONE NAME. MANY BATTLES.</span><button onClick={()=>setVideoPaused(!videoPaused)}>{videoPaused?<Play size={13}/>:<Pause size={13}/>} {videoPaused?'PLAY MOTION':'PAUSE MOTION'}</button></div>
         <div className="hero-index">IL ROSSO <span>—</span> 001</div>
         <div className="hero-side-note">UNA FEDE, UNA STORIA</div>
       </section>
@@ -153,7 +155,7 @@ function App() {
       </section>
       <section className="tifosi section-pad" id="tifosi">
         <div className="section-kicker"><span>05 — I TIFOSI</span><span>THE PEOPLE ARE THE SOUND</span></div>
-        <div className="tifosi-hero"><div className="tifosi-photo"><img src={ASSETS.sf26Track} alt="Ferrari fans trackside at Fiorano during the SF-26 first laps gallery" loading="lazy"/><div className="tifosi-image-overlay"/></div><div className="tifosi-message"><p className="eyebrow">NOT A CROWD. A CHORUS.</p><h2>When the red<br/>appears, <em>we rise.</em></h2><p className="tifosi-italian">La passione non finisce mai.</p><span className="tifosi-translation">THE PASSION NEVER ENDS.</span></div><div className="tifosi-vertical">MONZA · MARANELLO · EVERYWHERE</div></div>
+        <div className="tifosi-hero"><div className="tifosi-photo"><img src={ASSETS.tifosi} alt="Tifosi flood the Monza circuit beneath the podium after the 2025 Italian Grand Prix, via Formula 1 media gallery" loading="lazy"/><div className="tifosi-image-overlay"/></div><div className="tifosi-message"><p className="eyebrow">NOT A CROWD. A CHORUS.</p><h2>When the red<br/>appears, <em>we rise.</em></h2><p className="tifosi-italian">La passione non finisce mai.</p><span className="tifosi-translation">THE PASSION NEVER ENDS.</span></div><div className="tifosi-vertical">MONZA · MARANELLO · EVERYWHERE</div></div>
         <div className="tifosi-story"><div className="tifosi-story-intro"><span>06:00 / THE GATES OPEN</span><h3>They arrive before<br/>the engines do.</h3></div><div className="tifosi-story-copy"><p>Flags gathered in the dark. Names painted across faces. A sea of red moving in one direction. The Tifosi are not background scenery to Ferrari’s story; they are one of its main characters.</p><p>At Monza, the circuit becomes a ritual. In Maranello, the team’s home becomes a pilgrimage. Wherever the red car races, people bring their own history with it.</p><a className="text-link" href="https://www.ferrari.com/en-EN/formula1" target="_blank" rel="noreferrer">FOLLOW THE SCUDERIA <ExternalLink size={14}/></a></div></div>
         <div className="tifosi-quote"><span className="quote-mark">“</span><p>We do not simply watch the race.<br/><em>We carry it home.</em></p><span className="quote-end">IL ROSSO / THE TIFOSI</span></div>
       </section>
