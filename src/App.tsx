@@ -63,7 +63,7 @@ function App() {
         <div className="hero-topline"><span><i className="live-dot"/> SCUDERIA FERRARI / A LIVING RACING HISTORY</span><span>MARANELLO · ITALIA</span></div>
         <div className="hero-copy">
           <motion.p className="eyebrow" initial={{opacity:0,y:18}} animate={{opacity:1,y:0}} transition={{delay:.25}}>A TEAM. A PEOPLE. A WAY OF LIFE.</motion.p>
-          <motion.h1 initial={{opacity:0,y:34}} animate={{opacity:1,y:0}} transition={{duration:1,ease:[.2,.7,.2,1]}}>SCUDERIA<br/><em>FERRARI.</em></motion.h1>
+          <motion.h1 initial={{opacity:0,y:34}} animate={{opacity:1,y:0}} transition={{duration:1,ease:[.2,.7,.2,1]}} style={{color:"#e10600"}}><span style={{color:"#e10600"}}>SCUDERIA<br/><em style={{color:"#e10600"}}>FERRARI.</em></span></motion.h1>
           <motion.div className="hero-baseline" initial={{opacity:0}} animate={{opacity:1}} transition={{delay:.7}}><span className="red-rule"/><p>Beyond the finish line.<br/>Beyond the generations.</p></motion.div>
           <motion.a className="hero-cta" href="#manifesto" initial={{opacity:0,y:12}} animate={{opacity:1,y:0}} transition={{delay:1}}><span>ENTER THE STORY</span><ArrowDown size={16}/></motion.a>
         </div>
