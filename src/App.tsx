@@ -1,9 +1,6 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { Environment, Float, OrbitControls, ContactShadows } from '@react-three/drei'
+import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react'
 import { ArrowDown, ArrowRight, ChevronLeft, ChevronRight, ExternalLink, Menu, Pause, Play, RotateCcw, Volume2, VolumeX, X } from 'lucide-react'
-import type { Group, Mesh, MeshBasicMaterial } from 'three'
 import './styles.css'
 
 const ASSETS = {
@@ -24,57 +21,16 @@ const chapters = [
   { year:'2007', title:'One point. One final round.', sub:'Kimi Räikkönen', copy:'A season of shifting momentum ended with Räikkönen taking the drivers’ crown by a single point. The margin was tiny; the memory was not.', tag:'THE LAST DRIVERS’ TITLE', image:ASSETS.sf26Detail, accent:'#c9ad7b' },
 ]
 const aeroModes = [
-  { id:'pressure', title:'Pressure field', number:'01', label:'SURFACE LOAD', value:'BALANCE', copy:'Air accelerates around bodywork and wings; pressure differences create aerodynamic forces. The visual field is conceptual, not Ferrari telemetry.' },
-  { id:'vortices', title:'Vortex trails', number:'02', label:'FLOW STRUCTURE', value:'VORTICITY', copy:'Vortices can energise boundary layers and shape the wake. Their position and strength are highly sensitive to geometry and operating conditions.' },
-  { id:'drs', title:'Active aero', number:'03', label:'DRAG CONTROL', value:'LOW-DRAG MODE', copy:'Modern regulations use active aerodynamic modes. This switch illustrates the concept only; it does not represent the SF-26 mechanism or exact geometry.' },
+  { id:'downforce', title:'Downforce', number:'01', label:'CORNERING LOAD', value:'GRIP', copy:'Front wings, floor, diffuser and rear bodywork manage pressure differences to generate vertical load. The goal is usable grip across changing speed, ride height and yaw.' },
+  { id:'drag', title:'Drag', number:'02', label:'STRAIGHT-LINE EFFICIENCY', value:'RESISTANCE', copy:'Every component disturbs the air. Teams trade drag against downforce, balancing straight-line speed with the load required through corners.' },
+  { id:'active', title:'Active aero', number:'03', label:'CONFIGURATION', value:'MODE SWITCH', copy:'The 2026 regulations introduce active aerodynamic configurations. This section explains the engineering idea, not the exact geometry or telemetry of a Ferrari car.' },
 ]
-function Streamlines({ active }: { active: string }) {
-  const refs = useRef<Group>(null)
-  const particles = useMemo(() => Array.from({length:54},(_,i)=>({x:-3.5+(i%9)*.16,y:-.02+Math.floor(i/9)*.15,z:-2.5+(i%7)*.72,speed:.65+(i%5)*.17,phase:(i%13)/13})),[])
-  useFrame(({clock}) => {
-    if (!refs.current) return
-    refs.current.children.forEach((child,i) => {
-      const p = particles[i]
-      const t = (clock.elapsedTime*p.speed+p.phase*8)%7
-      child.position.x = -3.6+t
-      child.position.y = p.y + Math.sin(t*1.6+p.z)*.08 + (active==='vortices' ? Math.sin(t*3+p.phase*9)*.13 : 0)
-      child.position.z = p.z + (active==='drs' ? Math.sin(t*1.1)*.18 : 0)
-      const m = child as Mesh
-      const mat = m.material as MeshBasicMaterial
-      mat.opacity = .22 + .7*Math.sin((t/7)*Math.PI)
-    })
-  })
-  return <group ref={refs}>{particles.map((p,i)=><mesh key={i} position={[p.x,p.y,p.z]}><sphereGeometry args={[active==='vortices'?.035:.022,8,8]}/><meshBasicMaterial color={active==='drs'?'#e9c78a':i%3===0?'#ff4b3e':'#f4eee4'} transparent opacity={.7}/></mesh>)}</group>
-}
-function AeroCar() {
-  const car = useRef<Group>(null)
-  useFrame(({clock}) => { if(car.current) { car.current.rotation.y = Math.sin(clock.elapsedTime*.22)*.12; car.current.position.y = Math.sin(clock.elapsedTime*.8)*.025 } })
-  const red = '#c8102e'
-  return <group ref={car} rotation={[0,.1,0]} scale={.88}>
-    <mesh position={[0,.08,0]} castShadow><capsuleGeometry args={[.23,.95,6,14]}/><meshStandardMaterial color={red} metalness={.72} roughness={.24}/></mesh>
-    <mesh position={[0,.12,-.24]} scale={[1.55,.6,1.4]} castShadow><sphereGeometry args={[.35,24,16]}/><meshStandardMaterial color={red} metalness={.7} roughness={.25}/></mesh>
-    <mesh position={[0,.34,-.14]} scale={[.8,.52,.65]} castShadow><sphereGeometry args={[.28,20,14]}/><meshStandardMaterial color="#151718" metalness={.8} roughness={.18}/></mesh>
-    <mesh position={[0,.03,.9]}><boxGeometry args={[1.55,.065,.25]}/><meshStandardMaterial color="#151515" metalness={.4} roughness={.3}/></mesh>
-    <mesh position={[0,.25,.9]}><boxGeometry args={[1.25,.06,.09]}/><meshStandardMaterial color={red} metalness={.6} roughness={.25}/></mesh>
-    <mesh position={[0,.28,-.86]}><boxGeometry args={[1.22,.055,.12]}/><meshStandardMaterial color="#171717" metalness={.55}/></mesh>
-    <mesh position={[0,.48,-.88]}><boxGeometry args={[.95,.05,.08]}/><meshStandardMaterial color={red} metalness={.7}/></mesh>
-    {[-1,1].map(side=><group key={side}>{[-.68,.72].map(z=><group key={z} position={[side*.54,.02,z]}><mesh rotation={[0,0,Math.PI/2]}><cylinderGeometry args={[.26,.26,.2,32]}/><meshStandardMaterial color="#080808" roughness={.9}/></mesh><mesh rotation={[0,0,Math.PI/2]}><cylinderGeometry args={[.14,.14,.205,24]}/><meshStandardMaterial color="#777" metalness={.8}/></mesh></group>)}<mesh position={[side*.42,.1,-.2]}><boxGeometry args={[.07,.06,.78]}/><meshStandardMaterial color="#222"/></mesh></group>)}
-    <mesh position={[0,-.05,0]}><boxGeometry args={[.8,.04,1.6]}/><meshStandardMaterial color="#050505"/></mesh>
-  </group>
-}
-function WindTunnel({ active }: { active:string }) {
-  return <Canvas camera={{position:[3.5,2.6,4.2],fov:39}} dpr={[1,1.5]} gl={{antialias:true,alpha:true}}>
-    <ambientLight intensity={.75}/><spotLight position={[3,6,3]} intensity={75} angle={.45} penumbra={.8} castShadow/><pointLight position={[-4,1,-2]} color="#e10600" intensity={12}/><pointLight position={[0,2,4]} color="#d5b77b" intensity={4}/>
-    <Float speed={.7} rotationIntensity={.04} floatIntensity={.08}><AeroCar/></Float><Streamlines active={active}/>
-    <ContactShadows position={[0,-.36,0]} opacity={.48} scale={6} blur={2.4} far={2}/><Environment preset="city"/><OrbitControls enablePan={false} minDistance={3.2} maxDistance={7} minPolarAngle={.65} maxPolarAngle={1.5} autoRotate autoRotateSpeed={.25}/>
-  </Canvas>
-}
 function App() {
   const [menuOpen,setMenuOpen]=useState(false)
   const [sound,setSound]=useState(false)
   const [videoPaused,setVideoPaused]=useState(false)
   const [activeChapter,setActiveChapter]=useState(3)
-  const [activeAero,setActiveAero]=useState('pressure')
+  const [activeAero,setActiveAero]=useState('downforce')
   const [saved,setSaved]=useState<string[]>([])
   const [galleryOpen,setGalleryOpen]=useState<number|null>(null)
   const [scrolled,setScrolled]=useState(false)
@@ -125,26 +81,25 @@ function App() {
       <section className="discipline section-pad" id="formula1">
         <div className="section-kicker"><span>01 — FORMULA ONE</span><span>THE SCUDERIA / 1950—NOW</span></div>
         <div className="discipline-hero">
-          <div className="discipline-image-wrap"><img src={ASSETS.sf26Track} alt="Scuderia Ferrari SF-26 on track at Fiorano, via Formula 1's media gallery" loading="lazy"/><div className="image-index">FIG. 01 / THE PRESENT</div><span className="image-cross">+</span></div>
+          <div className="discipline-image-wrap"><img src={ASSETS.sf26Track} onError={e=>{const img=e.currentTarget;if(img.dataset.fallback!=='1'){img.dataset.fallback='1';img.src=ASSETS.sf26Studio}else{img.style.display='none'}}} alt="Scuderia Ferrari SF-26 on track at Fiorano, via Formula 1's media gallery" loading="lazy"/><div className="image-index">FIG. 01 / THE PRESENT</div><span className="image-cross">+</span></div>
           <div className="discipline-copy"><p className="eyebrow">THE ORIGINAL STAGE</p><h2>Every lap<br/>carries <em>history.</em></h2><p>From the first championship season to a new technical era, Formula One is the Scuderia’s most visible stage: a contest of speed, engineering, nerve and decisions made in seconds.</p><div className="discipline-facts"><div><strong>1950</strong><span>WORLD CHAMPIONSHIP DEBUT</span></div><div><strong>16</strong><span>CONSTRUCTORS’ TITLES</span></div></div><a className="text-link" href="https://www.formula1.com/en/teams/ferrari.html" target="_blank" rel="noreferrer">EXPLORE THE F1 TEAM <ExternalLink size={14}/></a></div>
         </div>
-        <div className="photo-strip"><figure><img src={ASSETS.sf26Studio} alt="Ferrari SF-26 official launch gallery image" loading="lazy"/><figcaption><span>01 / THE FORM</span><span>SF-26</span></figcaption></figure><figure><img src={ASSETS.sf26Alt} alt="Ferrari SF-26 studio detail" loading="lazy"/><figcaption><span>02 / THE SURFACE</span><span>ENGINEERED SCARLET</span></figcaption></figure><figure><img src={ASSETS.sf26Detail} alt="Ferrari SF-26 bodywork detail" loading="lazy"/><figcaption><span>03 / THE DETAIL</span><span>EVERY MILLIMETRE</span></figcaption></figure></div>
+        <div className="photo-strip"><figure><img src={ASSETS.sf26Studio} onError={e=>{const img=e.currentTarget;if(img.dataset.fallback!=='1'){img.dataset.fallback='1';img.src=ASSETS.sf26Studio}else{img.style.display='none'}}} alt="Ferrari SF-26 official launch gallery image" loading="lazy"/><figcaption><span>01 / THE FORM</span><span>SF-26</span></figcaption></figure><figure><img src={ASSETS.sf26Alt} onError={e=>{const img=e.currentTarget;if(img.dataset.fallback!=='1'){img.dataset.fallback='1';img.src=ASSETS.sf26Studio}else{img.style.display='none'}}} alt="Ferrari SF-26 studio detail" loading="lazy"/><figcaption><span>02 / THE SURFACE</span><span>ENGINEERED SCARLET</span></figcaption></figure><figure><img src={ASSETS.sf26Detail} onError={e=>{const img=e.currentTarget;if(img.dataset.fallback!=='1'){img.dataset.fallback='1';img.src=ASSETS.sf26Studio}else{img.style.display='none'}}} alt="Ferrari SF-26 bodywork detail" loading="lazy"/><figcaption><span>03 / THE DETAIL</span><span>EVERY MILLIMETRE</span></figcaption></figure></div>
       </section>
       <section className="endurance section-pad" id="endurance">
         <div className="section-kicker"><span>02 — ENDURANCE</span><span>24 HOURS / ONE PURPOSE</span></div>
         <div className="endurance-layout"><div className="endurance-copy"><p className="eyebrow">THE LONG DISTANCE</p><h2>Not one lap.<br/><em>All the hours.</em></h2><p>In endurance racing, speed has to survive the night. Drivers share the car. Mechanics repeat precise rituals. Strategy is measured in stints, reliability and the ability to keep pushing when the track empties and dawn returns.</p><p>Ferrari’s return to the top class at Le Mans with the 499P connected a new generation to one of the marque’s oldest racing ambitions.</p><a className="text-link" href="https://www.fiawec.com/" target="_blank" rel="noreferrer">ENTER THE WORLD ENDURANCE CHAMPIONSHIP <ExternalLink size={14}/></a></div><div className="endurance-film"><a className="film-thumb" href="https://www.youtube.com/watch?v=e087nzfYJpc" target="_blank" rel="noreferrer"><img src="https://img.youtube.com/vi/e087nzfYJpc/maxresdefault.jpg" alt="Ferrari 499P Hypercar — WEC Icons official video thumbnail" loading="lazy"/><span className="play-disc"><Play fill="currentColor" size={22}/></span><span className="film-duration">WEC ICONS / OFFICIAL FILM</span></a><div className="film-caption"><span>FERRARI 499P</span><span>LE MANS / HYPERCAR</span></div></div></div>
         <div className="endurance-bottom"><span>FORMULA ONE</span><span className="endurance-x">×</span><span>WORLD ENDURANCE CHAMPIONSHIP</span><span className="endurance-x">×</span><span>FERRARI COMPETIZIONI GT</span></div>
       </section>
-      <section className="aero section-pad" id="aero">
-        <div className="section-kicker"><span>03 — THE WIND TUNNEL</span><span>SEE THE INVISIBLE</span></div>
-        <div className="section-heading"><div><p className="eyebrow">AERODYNAMICS / INTERACTIVE STUDY</p><h2>Air has no shape.<br/><em>Until speed gives it one.</em></h2></div><p className="section-intro">Explore the invisible forces around a race car. Switch the visualisation mode, orbit the model and watch flow particles move through a conceptual wind-tunnel scene.</p></div>
-        <div className="windtunnel">
-          <div className="wind-head"><span><i className="live-dot"/> VIRTUAL WIND TUNNEL</span><span>CONCEPTUAL VISUALISATION / NOT FERRARI TELEMETRY</span><span>3D / INTERACTIVE</span></div>
-          <div className="wind-stage"><WindTunnel active={activeAero}/><div className="wind-axis">X / FLOW<br/>Y / WIDTH<br/>Z / HEIGHT</div><div className="wind-callout"><span>MODE / {selectedAero.number}</span><strong>{selectedAero.label}</strong><small>SIMULATION VISUAL</small></div><div className="wind-legend"><span><i className="legend-red"/> SURFACE FLOW</span><span><i className="legend-ivory"/> PARTICLE TRACE</span></div></div>
-          <div className="wind-controls">{aeroModes.map(a=><button key={a.id} className={activeAero===a.id?'wind-tab active':'wind-tab'} onClick={()=>setActiveAero(a.id)}><span>{a.number}</span><b>{a.title}</b><ArrowRight size={15}/></button>)}</div>
-          <div className="wind-readout"><div><span className="detail-code">LIVE EXPLANATION / {selectedAero.number}</span><h3>{selectedAero.title}</h3><p>{selectedAero.copy}</p></div><div className="wind-metric"><span>FOCUS</span><strong>{selectedAero.value}</strong><small>QUALITATIVE / NOT TO SCALE</small></div><button className="reset-button" onClick={()=>setActiveAero('pressure')}><RotateCcw size={14}/> RESET STUDY</button></div>
+      <section className="aero section-pad aero-editorial" id="aero">
+        <div className="section-kicker"><span>03 — AERODYNAMICS</span><span>ENGINEERING, NOT ILLUSTRATION</span></div>
+        <div className="section-heading"><div><p className="eyebrow">THE INVISIBLE WORK</p><h2>Speed is shaped<br/>by what you <em>cannot see.</em></h2></div><p className="section-intro">No synthetic car model. No pretend telemetry. A photographic study of the real machine, with the engineering trade-offs explained plainly.</p></div>
+        <div className="aero-editorial-feature">
+          <div className="aero-real-image"><img src={ASSETS.sf26Track} onError={e=>{const img=e.currentTarget;if(img.dataset.fallback!=='1'){img.dataset.fallback='1';img.src=ASSETS.sf26Studio}else{img.style.display='none'}}} alt="Scuderia Ferrari SF-26 in motion, sourced from Formula 1's official media gallery" loading="lazy" onError={e=>{const img=e.currentTarget;if(img.dataset.fallback!=='1'){img.dataset.fallback='1';img.src=ASSETS.sf26Studio}else{img.style.display='none'}}}/><div className="aero-photo-shade"/><div className="aero-photo-caption"><span>SF-26 / 2026</span><span>THE REAL MACHINE</span></div><span className="aero-photo-number">03</span></div>
+          <div className="aero-editorial-side"><span className="aero-side-index">AERODYNAMIC PRINCIPLES / 01—03</span><h3>{selectedAero.title}<br/><em>{selectedAero.label.toLowerCase()}</em></h3><p>{selectedAero.copy}</p><div className="aero-mode-list">{aeroModes.map(a=><button key={a.id} className={activeAero===a.id?'aero-mode active':'aero-mode'} onClick={()=>setActiveAero(a.id)}><span>{a.number}</span><b>{a.title}</b><span className="aero-mode-mark">{activeAero===a.id?'−':'+'}</span></button>)}</div><div className="aero-current"><span>ENGINEERING FOCUS</span><strong>{selectedAero.value}</strong><small>EXPLANATORY FEATURE / NOT FERRARI TELEMETRY</small></div></div>
         </div>
-        <div className="aero-principles"><article><span>01 / DOWNFORCE</span><h3>Make the air work.</h3><p>Wings and underbody flow generate load that can improve cornering grip, at the cost of drag and sensitivity.</p></article><article><span>02 / PLATFORM</span><h3>Keep the window.</h3><p>Ride height, pitch and yaw change how the aerodynamic package behaves. Mechanical setup and aero cannot be separated.</p></article><article><span>03 / TRADE-OFF</span><h3>Every gain costs.</h3><p>More downforce is not free. Engineers balance cornering, straight-line speed, stability and tyre behaviour for each circuit.</p></article></div>
+        <div className="aero-principles"><article><span>01 / LOAD</span><h3>Downforce.</h3><p>Pressure differences help push the car into the road, increasing the tyre load available for cornering.</p></article><article><span>02 / RESISTANCE</span><h3>Drag.</h3><p>Air resistance costs straight-line speed. Every aero choice is a compromise, not a free gain.</p></article><article><span>03 / CONTROL</span><h3>Balance.</h3><p>The front and rear of the car must work as one. Ride height, pitch and yaw can change the entire aerodynamic platform.</p></article></div>
+        <div className="aero-source"><span>VISUAL SOURCE / FORMULA 1 MEDIA GALLERY</span><a href="https://www.formula1.com/en/latest/article/gallery-check-out-every-angle-of-ferraris-2026-f1-car.7HdOPtJJwN5VHJ8XAWVtuS" target="_blank" rel="noreferrer">VIEW THE SF-26 PHOTOGRAPHY <ExternalLink size={13}/></a></div>
       </section>
       <section className="archive section-pad" id="archive">
         <div className="section-kicker"><span>04 — THE ARCHIVE</span><span>MEMORY IS A FORM OF SPEED</span></div>
@@ -161,7 +116,7 @@ function App() {
       <section className="gallery-section section-pad" id="gallery">
         <div className="section-kicker"><span>06 — THE GALLERY</span><span>DETAILS THAT STAY</span></div>
         <div className="section-heading"><div><p className="eyebrow">A STUDY IN SCARLET</p><h2>Look closer.<br/><em>Remember longer.</em></h2></div><p className="section-intro">A small, curated selection from the Formula 1 media gallery. Select an image to view it larger. For rights and source context, open the original gallery.</p></div>
-        <div className="gallery-grid">{gallery.map((g,i)=><button className={'gallery-card gallery-'+g.ratio} key={g.title} onClick={()=>setGalleryOpen(i)}><img src={g.src} alt={g.title} loading="lazy"/><span className="gallery-index">0{i+1}</span><span className="gallery-caption"><b>{g.title}</b><small>{g.credit}</small></span><span className="gallery-open">↗</span></button>)}</div>
+        <div className="gallery-grid">{gallery.map((g,i)=><button className={'gallery-card gallery-'+g.ratio} key={g.title} onClick={()=>setGalleryOpen(i)}><img src={g.src} onError={e=>{const img=e.currentTarget;if(img.dataset.fallback!=='1'){img.dataset.fallback='1';img.src=ASSETS.sf26Studio}else{img.style.display='none'}}} alt={g.title} loading="lazy"/><span className="gallery-index">0{i+1}</span><span className="gallery-caption"><b>{g.title}</b><small>{g.credit}</small></span><span className="gallery-open">↗</span></button>)}</div>
         <div className="gallery-footer"><span>IMAGERY VIA FORMULA 1 MEDIA GALLERY</span><a href="https://www.formula1.com/en/latest/article/gallery-check-out-every-angle-of-ferraris-2026-f1-car.7HdOPtJJwN5VHJ8XAWVtuS" target="_blank" rel="noreferrer">VIEW SOURCE GALLERY <ExternalLink size={13}/></a></div>
       </section>
       <section className="film-section section-pad">
@@ -172,10 +127,10 @@ function App() {
         <div className="section-kicker"><span>08 — YOUR ARCHIVE</span><span>KEEP WHAT MOVES YOU</span></div>
         <div className="collection-layout"><div><p className="eyebrow">A PERSONAL COLLECTION</p><h2>Some moments<br/>stay <em>forever.</em></h2><p className="collection-desc">Save the chapters that mean something to you. Your collection stays in this browser session; no account or data upload is required.</p></div><div className="collection-panel"><div className="collection-head"><span>YOUR COLLECTION</span><span>{saved.length.toString().padStart(2,'0')} SAVED</span></div>{saved.length===0?<div className="empty-collection"><span>+</span><p>Your archive begins with a moment.</p><small>Save a chapter from the history section.</small></div>:saved.map(item=><div className="saved-item" key={item}><span>{item}</span><button onClick={()=>toggleSaved(item)} aria-label={'Remove '+item}>×</button></div>)}<button className="collection-clear" onClick={()=>setSaved([])} disabled={saved.length===0}>CLEAR COLLECTION</button></div></div>
       </section>
-      <section className="closing"><img src={ASSETS.sf26Studio} alt="" loading="lazy"/><div className="closing-overlay"/><div className="closing-copy"><p className="eyebrow">THE STORY IS STILL BEING WRITTEN</p><h2>Always<br/><em>in motion.</em></h2><a href="#home" className="hero-cta"><span>RETURN TO THE BEGINNING</span><ArrowDown size={16}/></a></div><div className="closing-number">IL ROSSO / FINE</div></section>
+      <section className="closing"><img src={ASSETS.sf26Studio} onError={e=>{const img=e.currentTarget;if(img.dataset.fallback!=='1'){img.dataset.fallback='1';img.src=ASSETS.sf26Studio}else{img.style.display='none'}}} alt="" loading="lazy"/><div className="closing-overlay"/><div className="closing-copy"><p className="eyebrow">THE STORY IS STILL BEING WRITTEN</p><h2>Always<br/><em>in motion.</em></h2><a href="#home" className="hero-cta"><span>RETURN TO THE BEGINNING</span><ArrowDown size={16}/></a></div><div className="closing-number">IL ROSSO / FINE</div></section>
     </main>
     <footer className="footer"><a className="footer-brand" href="#home"><img src={ASSETS.ferrariWordmark} alt="Ferrari wordmark" /><span>IL ROSSO<small>AN INDEPENDENT TRIBUTE</small></span></a><p>An independent fan-made tribute to Scuderia Ferrari.<br/>Ferrari and Scuderia Ferrari marks belong to their respective owners. Not affiliated with, endorsed by, or sponsored by Ferrari S.p.A., Formula 1 or FIA WEC.</p><div className="footer-right"><span>BUILT WITH RESPECT.</span><a href="https://www.ferrari.com/" target="_blank" rel="noreferrer">FERRARI OFFICIAL SITE ↗</a><span>© {new Date().getFullYear()} IL ROSSO</span></div></footer>
-    {galleryOpen!==null&&<div className="lightbox" role="dialog" aria-modal="true" aria-label="Gallery image viewer" onClick={()=>setGalleryOpen(null)}><button className="lightbox-close" aria-label="Close gallery" onClick={()=>setGalleryOpen(null)}><X size={22}/></button><button className="lightbox-prev" aria-label="Previous image" onClick={e=>{e.stopPropagation();setGalleryOpen((galleryOpen+gallery.length-1)%gallery.length)}}><ChevronLeft size={24}/></button><img src={gallery[galleryOpen].src} alt={gallery[galleryOpen].title} onClick={e=>e.stopPropagation()}/><button className="lightbox-next" aria-label="Next image" onClick={e=>{e.stopPropagation();setGalleryOpen((galleryOpen+1)%gallery.length)}}><ChevronRight size={24}/></button><p>{gallery[galleryOpen].title} / {gallery[galleryOpen].credit}</p></div>}
+    {galleryOpen!==null&&<div className="lightbox" role="dialog" aria-modal="true" aria-label="Gallery image viewer" onClick={()=>setGalleryOpen(null)}><button className="lightbox-close" aria-label="Close gallery" onClick={()=>setGalleryOpen(null)}><X size={22}/></button><button className="lightbox-prev" aria-label="Previous image" onClick={e=>{e.stopPropagation();setGalleryOpen((galleryOpen+gallery.length-1)%gallery.length)}}><ChevronLeft size={24}/></button><img src={gallery[galleryOpen].src} onError={e=>{const img=e.currentTarget;if(img.dataset.fallback!=='1'){img.dataset.fallback='1';img.src=ASSETS.sf26Studio}else{img.style.display='none'}}} alt={gallery[galleryOpen].title} onClick={e=>e.stopPropagation()}/><button className="lightbox-next" aria-label="Next image" onClick={e=>{e.stopPropagation();setGalleryOpen((galleryOpen+1)%gallery.length)}}><ChevronRight size={24}/></button><p>{gallery[galleryOpen].title} / {gallery[galleryOpen].credit}</p></div>}
   </div>
 }
 export default App
