@@ -92,10 +92,13 @@ function App() {
         <div className="manifesto-foot"><span>01 / THE MACHINE</span><span>02 / THE PEOPLE</span><span>03 / THE MEMORY</span></div>
       </section>
       <section className="machine section-pad" id="machine">
-        <div className="section-kicker"><span>01 — LA MACCHINA</span><span>AN ORIGINAL DIGITAL STUDY</span></div>
-        <div className="section-heading"><div><p className="eyebrow">FORM / FUNCTION / FORCE</p><h2>Engineering<br/>made <em>visible.</em></h2></div><p className="section-intro">Explore an original, illustrative open-wheel concept in three dimensions. Orbit the model, inspect its proportions and consider the compromises between grip, drag and balance. This is an educational interpretation—not an official Ferrari design or CAD model.</p></div>
-        <div className="machine-stage"><MachineScene/><div className="machine-overlay machine-overlay-top"><span>MODEL / 001</span><span>CONCEPT FORM · NOT TO SCALE</span></div><div className="machine-overlay machine-overlay-bottom"><span>DRAG TO ORBIT</span><span>SCROLL TO ZOOM</span><span>WEBGL / THREE.JS</span></div></div>
-        <div className="machine-notes"><article><span>01 / AERODYNAMICS</span><h3>Air is a material.</h3><p>Wings and bodywork shape airflow. Downforce adds tyre load; drag resists forward motion.</p></article><article><span>02 / MECHANICAL GRIP</span><h3>Four contact patches.</h3><p>Tyres translate the car’s forces into the road. Load, temperature and surface conditions change available grip.</p></article><article><span>03 / VEHICLE DYNAMICS</span><h3>Balance is everything.</h3><p>Suspension, mass distribution and aerodynamic balance work together. A gain in one area can create a cost elsewhere.</p></article></div>
+        <div className="section-kicker"><span>01 — LA MACCHINA</span><span>THE REAL MACHINE / PHOTOGRAPHIC STUDY</span></div>
+        <div className="section-heading"><div><p className="eyebrow">MARANELLO / ON TRACK</p><h2>No imitation.<br/><em>The real thing.</em></h2></div><p className="section-intro">A real Scuderia Ferrari Formula One car, photographed for Formula 1’s official media gallery. No invented geometry, no pretend CAD, no substitute model. Just the machine as it exists.</p></div>
+        <figure className="machine-photo">
+          <img src={ASSETS.sf26Studio} alt="Scuderia Ferrari Formula One car in official Formula 1 media photography" loading="lazy" onError={e=>{const img=e.currentTarget;if(img.dataset.fallback!=='1'){img.dataset.fallback='1';img.src=ASSETS.sf26Alt}else{img.style.display='none'}}}/>
+          <figcaption><span>SCUDERIA FERRARI / OFFICIAL MEDIA PHOTOGRAPHY</span><span>THE MACHINE, WITHOUT INVENTION</span></figcaption>
+        </figure>
+        <div className="machine-notes"><article><span>01 / AERODYNAMICS</span><h3>Air is a material.</h3><p>Wings, floor and bodywork shape airflow. Downforce adds tyre load; drag resists forward motion.</p></article><article><span>02 / MECHANICAL GRIP</span><h3>Four contact patches.</h3><p>Tyres translate the car’s forces into the road. Load, temperature and surface conditions change available grip.</p></article><article><span>03 / VEHICLE DYNAMICS</span><h3>Balance is everything.</h3><p>Suspension, mass distribution and aerodynamic balance work together. A gain in one area can create a cost elsewhere.</p></article></div>
       </section>
       <section className="discipline section-pad" id="formula1">
         <div className="section-kicker"><span>01 — FORMULA ONE</span><span>THE SCUDERIA / 1950—NOW</span></div>
