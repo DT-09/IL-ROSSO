@@ -100,3 +100,9 @@
 .marque-foot a{color:#d7c2a2}.marque-foot a:hover{color:#e10600}
 @media(max-width:900px){.marque-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.machine-notes{grid-template-columns:1fr;gap:20px}}
 @media(max-width:520px){.machine-stage{height:380px}.machine-overlay{left:12px;right:12px;font-size:6px}.machine-overlay-bottom{flex-wrap:wrap;justify-content:flex-start}.marque-grid{grid-template-columns:1fr}.marque-grid article{min-height:220px}.marque-foot{flex-direction:column;line-height:1.8}}
+
+/* Real-machine feature: photography, never a fabricated 3D substitute */
+.machine-photo{margin:34px 0 0;border:1px solid #40352d;background:#100d0c}
+.machine-photo img{display:block;width:100%;height:clamp(320px,55vw,680px);object-fit:cover;object-position:center}
+.machine-photo figcaption{display:flex;justify-content:space-between;gap:18px;padding:15px 18px;border-top:1px solid #40352d;font:8px var(--mono);letter-spacing:.12em;color:#a99e91}
+@media(max-width:560px){.machine-photo img{height:330px}.machine-photo figcaption{flex-direction:column;line-height:1.7}}
