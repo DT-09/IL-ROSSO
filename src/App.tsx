@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react'
 import { ArrowDown, ArrowRight, ChevronLeft, ChevronRight, ExternalLink, Menu, Pause, Play, X } from 'lucide-react'
 import './styles.css'
-import MachineScene from './MachineScene'
 
 const ASSETS = {
   sf26Studio: 'https://media.formula1.com/image/upload/c_fit,w_3200,h_1800/q_auto/v1740000001/fom-website/2026/Ferrari/F678_still_f03_16_9_v10.webp',
