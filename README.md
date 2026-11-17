@@ -14,9 +14,10 @@ IL ROSSO is not an official Ferrari property, a newswire, or a static fan landin
 - **Machines** — selected car dossiers spanning early sports racers, GTs, Formula One and the 499P.
 - **Drivers** — selected Ferrari championship figures and career context.
 - **Circuits** — editorial circuit profiles with track character and Ferrari context.
-- **Race Lab** — an interactive, assumption-driven tyre strategy exercise comparing zero-, one-, two- and three-stop plans.
+- **Race Analysis** — an editorial reading room for tyre performance, pit-stop context and endurance racing, using historical and technical explanation rather than a racing simulator.
 - **Tifosi** — the culture of Monza, Maranello and race-day rituals.
 - **The Vault** — save archive entries and dossiers locally in the current browser.
+- **Tifosi Notebook** — keep private race-day memories and notes locally on the current device.
 
 ## Accuracy policy
 
@@ -24,7 +25,7 @@ IL ROSSO is not an official Ferrari property, a newswire, or a static fan landin
 - Ferrari entered the Formula One World Championship in 1950.
 - The Drivers’ Championship began in 1950. The Constructors’ Championship began in 1958. The 1952 Ascari title is a Drivers’ title, not a Constructors’ title.
 - Historical entries include external source links. Those links are research starting points, not a substitute for checking primary records.
-- The Race Lab is a simplified educational model. It is not Ferrari telemetry, a race prediction, or a validated tyre model.
+- Race analysis is explanatory and historical. It does not simulate driving or provide operational racing advice.
 - The machine catalogue is intentionally selective. It does not claim to be exhaustive.
 - Current-season standings and live timing are not represented as live data.
 
