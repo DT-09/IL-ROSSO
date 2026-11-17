@@ -130,3 +130,97 @@ body:before{content:"";position:fixed;z-index:120;left:0;top:0;height:2px;width:
 @media(max-width:1050px){.place-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.place-card{min-height:390px}}
 @media(max-width:760px){.visual-atlas{padding:72px var(--page)}.visual-atlas-head{grid-template-columns:1fr;gap:22px;margin-bottom:32px}.place-gallery{grid-template-columns:1fr}.place-card{min-height:360px}.place-art{height:180px}.hero-horse{right:15px;top:17%;padding:8px}.hero-horse .horse-mark{width:104px}.hero-horse span{font-size:5px;letter-spacing:.1em}.horse-mark{width:38px;height:46px}}
 @media(prefers-reduced-motion:reduce){.place-card,.place-art svg{transition:none}}
+
+
+/* 2026 Ferrari editorial direction: Modena enamel, Rosso Corsa, racing green, glass and metal */
+:root{color-scheme:dark;--red:#e10613;--paper:#f4eee2;--gold:#f4c542;--muted:#c0b7a8;--line:rgba(255,244,224,.19);--page:clamp(22px,6.4vw,112px);background:#11100f}
+html{background:#11100f}
+body,.app-shell{background:#11100f;color:var(--paper)}
+body:before{background:radial-gradient(ellipse at 10% 8%,#e1061315,transparent 34%),radial-gradient(ellipse at 95% 35%,#f4c5420b,transparent 30%),linear-gradient(180deg,#11100f,#17130f 46%,#101416)}
+.top-nav{background:rgba(17,16,15,.62);backdrop-filter:blur(24px) saturate(155%);-webkit-backdrop-filter:blur(24px) saturate(155%);border-bottom:1px solid #ffffff26;box-shadow:0 8px 35px #0003}
+.wordmark>span:last-child{color:#fff;font-size:11px;letter-spacing:.22em}
+.wordmark small{color:#e4c77c}
+.nav-item{color:#d0c8bb}.nav-item.active,.nav-item:hover{color:#fff}.nav-item.active small{color:var(--gold)}
+.vault-button{border-color:#ffffff44;background:#ffffff0b;backdrop-filter:blur(12px)}
+.micro{color:#f1d27a}
+.masthead{height:min(900px,calc(100svh - 76px));min-height:690px;background:#4b1015}
+.masthead-photo{background-image:url("https://media.formula1.com/image/upload/c_fit,w_3200,h_1800/q_auto/v1740000001/trackside-images/2025/F1_Grand_Prix_of_Italy/2234148740.webp");filter:saturate(1.08) contrast(1.06);transform:scale(1.025);animation:heroDrift 24s ease-in-out infinite alternate}
+@keyframes heroDrift{from{transform:scale(1.025) translate3d(0,0,0)}to{transform:scale(1.12) translate3d(-1.2%,.4%,0)}}
+.masthead-overlay{background:linear-gradient(90deg,rgba(23,8,9,.94),rgba(41,10,13,.72) 38%,rgba(15,15,15,.08) 80%),linear-gradient(0deg,#11100f 0%,transparent 29%,rgba(0,0,0,.12))}
+.masthead:after{background:linear-gradient(90deg,#25090de8 0%,#3a0d13a8 35%,transparent 78%),linear-gradient(0deg,#11100f 0%,transparent 36%);mix-blend-mode:normal}
+.masthead-meta,.masthead-foot{color:#f0e4d1}
+.masthead-meta i{background:var(--gold);box-shadow:0 0 14px #f4c542aa}
+.masthead-copy{max-width:1050px;padding-top:70px}
+.masthead-copy h1{font-size:clamp(112px,18vw,260px);text-shadow:0 12px 60px #0008}
+.masthead-copy h1 em{color:#f3c542;text-shadow:0 8px 45px #f4c54222}
+.masthead-lede{max-width:480px;color:#f0e7dc;font-size:15px}
+.enter-button{background:linear-gradient(120deg,#f0c642,#e10613 80%);border:1px solid #ffe28a;color:#17100d;box-shadow:0 10px 35px #e1061340;font-weight:700;transition:transform .25s,box-shadow .25s}
+.enter-button:hover{background:linear-gradient(120deg,#ffe17a,#e10613);transform:translateY(-3px);box-shadow:0 16px 42px #e1061366}
+.sound-toggle{display:inline-flex;align-items:center;gap:12px;padding:12px 15px;border:1px solid #ffffff45;border-radius:3px;background:#ffffff14;color:#f7eee2;font:8px var(--mono);letter-spacing:.13em;backdrop-filter:blur(14px);transition:background .25s,border-color .25s}
+.sound-toggle:hover,.sound-on{background:#ffffff24;border-color:#f4c54288;color:#f8d978}
+.sound-bars i{background:#f4c542}
+.hero-horse{right:clamp(42px,10vw,170px);top:15%;padding:16px;background:linear-gradient(145deg,#fff7dc42,#ffffff0b);border:1px solid #fff9;border-radius:4px;box-shadow:0 25px 80px #0007;backdrop-filter:blur(15px) saturate(145%);transform:rotate(2deg)}
+.hero-horse .horse-mark{width:clamp(145px,17vw,220px);height:clamp(170px,19vw,250px)}
+.hero-horse span{color:#fff0bf;text-shadow:0 2px 9px #000}
+.horse-mark{display:inline-flex;align-items:center;justify-content:center;overflow:hidden;width:46px;height:54px;flex:0 0 auto;background:#f4c542;border:2px solid #e6c34f;box-shadow:0 5px 20px #0007;clip-path:polygon(0 0,100% 0,100% 67%,90% 85%,50% 100%,10% 85%,0 67%)}
+.horse-mark img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 48%;transform:scale(1.12)}
+.horse-mark-small{width:35px;height:42px}
+.continuum-origin .horse-mark{width:90px;height:108px}
+.footer-brand .horse-mark{width:48px;height:58px}
+.story-intro{background:linear-gradient(125deg,#f0e9dc 0%,#e5dfd2 48%,#d4d0c6 100%);color:#221b18}
+.story-intro .micro,.story-intro .story-kicker,.story-intro .story-stop small{color:#8e2022}
+.story-kicker,.story-stop>span{color:#6e5a43}
+.story-title h2,.story-stop b{color:#241b17}
+.story-title h2 em{color:#bd1520}
+.story-title>p,.story-stop p{color:#5e554c}
+.story-rail:before{background:linear-gradient(#bd1520,#c6a35a 70%,transparent)}
+.story-stop>i{background:#eee7d9}
+.story-photograph{border-color:#b5a68f;box-shadow:0 25px 65px #392a1c25}
+.story-photograph figcaption{background:#28201c;color:#f0e4d1}
+.film-room{background:linear-gradient(120deg,#0e1719,#173c36 42%,#10232d 100%);border-color:#ffffff26}
+.film-heading h2{color:#f4eee2}.film-heading p{color:#c6d0c8}.film-index{color:#f1d27a}
+.film-frame{border:1px solid #d8bd7c77;box-shadow:0 30px 90px #0008;border-radius:4px;overflow:hidden}
+.continuum{background:linear-gradient(120deg,#231114,#1a1b20 45%,#152a32);border-color:#ffffff25}
+.continuum-head h2{color:#f5eee3}.continuum-head h2 em{color:#f4c542}.continuum-head>p{color:#d2c7b8}
+.continuum-map{background:linear-gradient(120deg,#e5c64c1c,#ffffff08 45%,#e106131a),rgba(255,255,255,.045);border:1px solid #ffffff36;backdrop-filter:blur(16px);box-shadow:0 24px 70px #0004}
+.continuum-branches button{background:#ffffff0c;border-color:#ffffff26;backdrop-filter:blur(12px)}
+.continuum-branches button:hover{background:#ffffff1a;border-color:#f4c54299}
+.manifesto-band{background:linear-gradient(110deg,#8e111a,#e10613 52%,#a92a23);border-color:#ffffff25}
+.manifesto-band h2 em{color:#ffe08b}.manifesto-band>p{color:#ffe9df}
+.visual-atlas{background:linear-gradient(120deg,#d8c9ad 0%,#d2d7cd 28%,#263f3b 62%,#182b39 100%);color:#1f1b17}
+.visual-atlas-head h2{color:#211b16}.visual-atlas-head h2 em{color:#b40e19}.visual-atlas-head>p{color:#413e37}
+.visual-atlas:before{background:radial-gradient(ellipse at 12% 10%,#f4c54255,transparent 34%),radial-gradient(ellipse at 90% 90%,#e1061338,transparent 42%),repeating-linear-gradient(135deg,transparent 0 58px,#ffffff15 59px 60px)}
+.place-card{border:1px solid #ffffff70;box-shadow:0 25px 60px #17100e30}
+.place-maranello{background:linear-gradient(155deg,#df3035,#8d151e 55%,#3d1b22)}
+.place-monza{background:linear-gradient(155deg,#4c8b70,#1c5b4b 60%,#173d3a)}
+.place-modena{background:linear-gradient(155deg,#f3d35e,#c2952e 55%,#65502a)}
+.place-lemans{background:linear-gradient(155deg,#648bb4,#31577d 55%,#1c2c47)}
+.place-card h3{color:#fff}.place-card p{color:#fff0}
+.feature-grid button,.machine-card,.driver-card,.analysis-grid article,.tifosi-grid article,.lab-controls,.lab-results{background:linear-gradient(145deg,#ffffff12,#ffffff05);border:1px solid #ffffff26;backdrop-filter:blur(14px)}
+.feature-grid button:hover,.machine-card:hover,.driver-card:hover{background:#ffffff1c;border-color:#f4c54288}
+.workspace{background:linear-gradient(125deg,#131619,#201416 48%,#151c20)}
+.workspace-top,.archive-count,.timeline-row,.circuit-row,.case-files>button{border-color:#ffffff26}
+.toolbar h2,.timeline-copy b,.circuit-row strong,.driver-card h3,.analysis-grid h3,.tifosi-grid h3{color:#f4eee2}
+.toolbar-note,.timeline-copy>span,.circuit-row>span:nth-last-child(2),.analysis-grid p,.tifosi-grid p{color:#c4baad}
+.timeline-row:hover .timeline-copy b,.circuit-row:hover strong,.case-files>button:hover>b{color:#f4c542}
+.timeline-year,.story-stop>span{color:#f4c542}
+.timeline-copy small,.case-files>button>span{color:#ff7c70}
+.tifosi-callout,.record-modal,.vault-modal{background:linear-gradient(145deg,#ffffff16,#ffffff07);border:1px solid #ffffff30;backdrop-filter:blur(18px);box-shadow:0 30px 100px #0009}
+.tifosi-callout>span,.note-save{color:#211713}
+.note-save{background:linear-gradient(110deg,#f4c542,#e10613);border-color:#f4c542}
+.site-footer{background:#0d1112;border-color:#ffffff24}
+.footer-brand>span:last-child{color:#fff}.footer-brand small{color:#f4c542}
+.site-footer>p{color:#b9b1a5}
+.footer-links{color:#f2dfb8}
+.modal-backdrop{background:#080808b8;backdrop-filter:blur(18px)}
+.record-modal h2,.vault-modal h2{color:#fff0df}
+.modal-subtitle{color:#f4c542}
+@media(max-width:760px){
+ .masthead{min-height:650px;height:calc(92svh - 66px)}
+ .masthead-overlay,.masthead:after{background:linear-gradient(90deg,#25090de8,#3a0d13a8 55%,#0003),linear-gradient(0deg,#11100f,transparent 45%)}
+ .hero-horse{top:16%;right:16px;padding:7px}
+ .hero-horse .horse-mark{width:92px;height:112px}
+ .hero-horse span{font-size:5px}
+ .story-intro{color:#241b17}
+}
+@media(prefers-reduced-motion:reduce){.masthead-photo{animation:none}}
