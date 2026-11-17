@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Activity, ArrowDownRight, ArrowLeft, ArrowRight, Bookmark, BookOpen, ChevronDown, ExternalLink, Flag, Gauge, Heart, History, Menu, Search, Settings2, ShieldCheck, SlidersHorizontal, Sparkles, Trophy, X } from "lucide-react";
+import { ArrowDownRight, ArrowRight, Bookmark, ExternalLink, Menu, Search, ShieldCheck, X } from "lucide-react";
 import { archive, circuits, drivers, machines, type ArchiveEntry, type Machine, type Driver, type Circuit } from "./data";
 import "./styles.css";
 
@@ -33,7 +33,6 @@ function App(){
  const [showVault,setShowVault]=useState(false);
  useEffect(()=>{localStorage.setItem("il-rosso-vault",JSON.stringify(saved));},[saved]);
  useEffect(()=>{document.body.style.overflow=selected||showVault?"hidden":"";return()=>{document.body.style.overflow="";};},[selected,showVault]);
- const searchResults=useMemo(()=>{const q=query.trim().toLowerCase();if(!q)return [];return allRecords.filter(r=>(r.title+" "+r.subtitle+" "+r.body+" "+(r.tags||[]).join(" ")).toLowerCase().includes(q)).slice(0,12);},[query]);
  const toggleSave=(id:string)=>setSaved(old=>old.includes(id)?old.filter(x=>x!==id):[...old,id]);
  const go=(id:Section)=>{setSection(id);setQuery("");setFilter("ALL");setMobileMenu(false);window.scrollTo({top:0,behavior:"smooth"});};
  const selectedSaved=selected?saved.includes(selected.id):false;
