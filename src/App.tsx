@@ -5,7 +5,7 @@ import "./styles.css";
 
 type Section = "discover" | "archive" | "machines" | "drivers" | "circuits" | "race-analysis" | "tifosi";
 type FanNote = { id:string; date:string; text:string };
-function HorseMark({small=false}:{small?:boolean}){return <svg className={small?"horse-mark horse-mark-small":"horse-mark"} viewBox="0 0 96 96" role="img" aria-label="Original prancing horse emblem"><path d="M22 75 16 67l8-5 5-13-4-10 8-7 8 5 7-8 11 2 8 9 8 2-2 9-8 5-4 13-9 10-8-5-8 7-7-4-5 3-2-5-7 3Zm14-39 4-9 8-3 5 4-7 4-4 8-6 1Zm24 1 9-4 8 4-3 5-8-1-6 4-4-4ZM31 59l-3 15 6 4 5-15Zm19 5 2 13 7 3 3-6-5-12Z" fill="currentColor"/></svg>}
+function HorseMark({small=false}:{small?:boolean}){return <svg className={small?"horse-mark horse-mark-small":"horse-mark"} viewBox="0 0 100 120" role="img" aria-label="Prancing horse emblem"><path className="horse-shield" d="M7 5H93V70C93 92 76 108 50 116 24 108 7 92 7 70Z" fill="#f5c928" stroke="#d4a91a" strokeWidth="2"/><path d="M8 7h28v5H8z" fill="#16864b"/><path d="M36 7h28v5H36z" fill="#f4eee0"/><path d="M64 7h28v5H64z" fill="#c73532"/><g fill="#171717"><path d="M34 88c-5-3-8-8-7-14l5-9 1-12-5-8 2-9 8-5 5-12 8-7 4 3-4 8 7 7 3 11 10 6 11 1 7 7-4 5-12-2-8-4-8 4-4 12-8 10-1 11-7 2-2-11-5-2-6 11-8 1-1-5 5-10-2-4Z"/><path d="m35 42-10-7-7-1 2-5 10-1 10 6Zm10-19 3-11 5-5 2 7-3 10Zm-7 24-9-3-8 2-2-5 10-5 12 4Zm29 13 10 2 8 8-2 4-8-5-12-2Z"/><path d="m28 75-9 7-9 2 1 5 13-1 10-7Zm30 5 7 10 9 5 4-4-8-8-4-10Z"/></g></svg>}
 
 type RecordItem = { kind: "archive" | "machine" | "driver" | "circuit"; id: string; title: string; subtitle: string; body: string; source: string; sourceLabel?: string; tags?: string[] };
 const NAV: {id:Section; label:string; number:string}[] = [
