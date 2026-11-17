@@ -84,3 +84,49 @@ body:before{content:"";position:fixed;z-index:120;left:0;top:0;height:2px;width:
 .story-photograph:hover img{transform:scale(1.025)}
 .story-photograph figcaption{display:flex;justify-content:space-between;gap:15px;padding:13px 16px;background:#0b0a09;font:8px var(--mono);letter-spacing:.09em;color:#a99d8d}
 @media(max-width:760px){.story-photograph{margin-top:42px}.story-photograph img{aspect-ratio:4/3}.story-photograph figcaption{flex-direction:column;font-size:7px}}
+
+/* A richer Ferrari visual language: enamel, racing colour, paper and metal */
+.horse-mark{width:46px;height:54px;flex:0 0 auto;filter:drop-shadow(0 5px 12px #0008)}
+.hero-horse .horse-mark{width:clamp(132px,17vw,218px);height:auto;filter:drop-shadow(0 22px 44px #000b)}
+.continuum-origin .horse-mark{width:90px;height:108px}
+.footer-brand .horse-mark{width:48px;height:58px}
+.horse-shield{filter:drop-shadow(0 2px 3px #0005)}
+.visual-atlas{position:relative;overflow:hidden;padding:112px var(--page) 120px;background:linear-gradient(118deg,#111b28 0%,#152b39 35%,#18201e 68%,#17100f 100%);border-bottom:1px solid #ffffff20}
+.visual-atlas:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 12% 10%,#d7a83d2c,transparent 34%),radial-gradient(ellipse at 90% 90%,#bd272b38,transparent 42%),repeating-linear-gradient(135deg,transparent 0 58px,#ffffff08 59px 60px);pointer-events:none}
+.visual-atlas-head{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:65px;align-items:end;margin-bottom:55px}
+.visual-atlas-head h2{font:clamp(43px,6.8vw,88px)/.98 var(--serif);font-weight:400;letter-spacing:-.04em;margin:18px 0 0;color:#f4eee4}
+.visual-atlas-head h2 em{font-style:normal;color:#f3c84b}
+.visual-atlas-head>p{max-width:430px;margin:0 0 6px;color:#d0d1cb;font-size:13px;line-height:1.95}
+.place-gallery{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.place-card{position:relative;min-height:420px;overflow:hidden;padding:23px 22px 24px;display:flex;flex-direction:column;border:1px solid #ffffff32;box-shadow:0 22px 45px #0003;isolation:isolate;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
+.place-card:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.7;mix-blend-mode:screen;pointer-events:none}
+.place-card:hover{transform:translateY(-9px);box-shadow:0 30px 60px #0006}
+.place-maranello{background:linear-gradient(155deg,#9d2827,#5c171b 55%,#271a20)}
+.place-maranello:before{background:radial-gradient(circle at 85% 12%,#f3a45a66,transparent 42%)}
+.place-monza{background:linear-gradient(155deg,#24644f,#153c3b 60%,#14262d)}
+.place-monza:before{background:radial-gradient(circle at 15% 12%,#e2d78c66,transparent 42%)}
+.place-modena{background:linear-gradient(155deg,#d3a92f,#916d25 55%,#473b2a)}
+.place-modena:before{background:radial-gradient(circle at 85% 18%,#fff1b766,transparent 40%)}
+.place-lemans{background:linear-gradient(155deg,#345a83,#203b61 55%,#171d31)}
+.place-lemans:before{background:radial-gradient(circle at 85% 12%,#8ab7db66,transparent 42%)}
+.place-art{height:205px;display:flex;align-items:center;justify-content:center;margin:-8px -12px 18px;color:#f7eee0;opacity:.92}
+.place-art svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 8px 10px #0004);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.place-card:hover .place-art svg{transform:scale(1.055) rotate(-1deg)}
+.place-card>span{font:8px var(--mono);letter-spacing:.16em;color:#fff9}
+.place-card h3{font:clamp(23px,2vw,31px)/1.04 var(--serif);font-weight:400;color:#fff;margin:18px 0 10px}
+.place-card p{font-size:11px;line-height:1.8;color:#fffC;margin:0 0 25px}
+.place-card>b{margin-top:auto;font:7px var(--mono);letter-spacing:.12em;color:#fff9}
+.visual-atlas .micro{color:#f4d47c}
+.masthead{background:#090a0c}
+.masthead:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#090a0c 0%,#090a0cdd 32%,transparent 75%),linear-gradient(0deg,#090a0cbb,transparent 38%)}
+.hero-horse{z-index:2;right:clamp(35px,9vw,150px);top:20%;padding:18px 18px 14px;background:radial-gradient(ellipse,#f3c84b20,transparent 70%);border-radius:50%}
+.hero-horse span{color:#f5d97d;text-shadow:0 2px 8px #000}
+.story-intro{background:linear-gradient(110deg,#101014,#15100f 48%,#121820)}
+.film-room{background:linear-gradient(120deg,#17100f,#19212b 60%,#101719)}
+.continuum{background:radial-gradient(ellipse at 12% 100%,#3c171a 0%,transparent 45%),linear-gradient(115deg,#111015,#111b24)}
+.manifesto-band{background:linear-gradient(105deg,#60191b,#9e2027 45%,#43212b);position:relative;overflow:hidden}
+.manifesto-band:after{content:"IL ROSSO";position:absolute;right:-2vw;bottom:-.25em;font:clamp(110px,24vw,340px)/.8 var(--serif);color:#ffffff0b;pointer-events:none;white-space:nowrap}
+.manifesto-band>*{position:relative;z-index:1}
+@media(max-width:1050px){.place-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.place-card{min-height:390px}}
+@media(max-width:760px){.visual-atlas{padding:72px var(--page)}.visual-atlas-head{grid-template-columns:1fr;gap:22px;margin-bottom:32px}.place-gallery{grid-template-columns:1fr}.place-card{min-height:360px}.place-art{height:180px}.hero-horse{right:15px;top:17%;padding:8px}.hero-horse .horse-mark{width:104px}.hero-horse span{font-size:5px;letter-spacing:.1em}.horse-mark{width:38px;height:46px}}
+@media(prefers-reduced-motion:reduce){.place-card,.place-art svg{transition:none}}
