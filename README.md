@@ -16,7 +16,7 @@ IL ROSSO is not an official Ferrari property, a newswire, or a static fan landin
 - **Circuits** — editorial circuit profiles with track character and Ferrari context.
 - **Race Analysis** — an editorial reading room for tyre performance, pit-stop context and endurance racing, using historical and technical explanation rather than a racing simulator.
 - **Tifosi** — the culture of Monza, Maranello and race-day rituals.
-- **Cinematic layer** — original prancing-horse crest, scroll-progress indicator, reveal transitions, optional user-activated ambient tone, and an embedded official Ferrari Hypercar film.
+- ****Cinematic layer** — original IL ROSSO heraldic rearing-horse crest (not the Ferrari trademark), scroll-progress indicator, reveal transitions, optional user-activated ambient tone, and an embedded Ferrari Hypercar film. Hero photography is attributed to Mickael Le rouzic under CC BY 2.0.
 - **The Vault** — save archive entries and dossiers locally in the current browser.
 - **Tifosi Notebook** — keep private race-day memories and notes locally on the current device.
 
