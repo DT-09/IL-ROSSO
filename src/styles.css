@@ -195,7 +195,7 @@ body:before{background:radial-gradient(ellipse at 10% 8%,#e1061315,transparent 3
 .place-monza{background:linear-gradient(155deg,#4c8b70,#1c5b4b 60%,#173d3a)}
 .place-modena{background:linear-gradient(155deg,#f3d35e,#c2952e 55%,#65502a)}
 .place-lemans{background:linear-gradient(155deg,#648bb4,#31577d 55%,#1c2c47)}
-.place-card h3{color:#fff}.place-card p{color:#fff0}
+.place-card h3{color:#fff}.place-card p{color:#fffc}
 .feature-grid button,.machine-card,.driver-card,.analysis-grid article,.tifosi-grid article,.lab-controls,.lab-results{background:linear-gradient(145deg,#ffffff12,#ffffff05);border:1px solid #ffffff26;backdrop-filter:blur(14px)}
 .feature-grid button:hover,.machine-card:hover,.driver-card:hover{background:#ffffff1c;border-color:#f4c54288}
 .workspace{background:linear-gradient(125deg,#131619,#201416 48%,#151c20)}
@@ -206,7 +206,7 @@ body:before{background:radial-gradient(ellipse at 10% 8%,#e1061315,transparent 3
 .timeline-year,.story-stop>span{color:#f4c542}
 .timeline-copy small,.case-files>button>span{color:#ff7c70}
 .tifosi-callout,.record-modal,.vault-modal{background:linear-gradient(145deg,#ffffff16,#ffffff07);border:1px solid #ffffff30;backdrop-filter:blur(18px);box-shadow:0 30px 100px #0009}
-.tifosi-callout>span,.note-save{color:#211713}
+.tifosi-callout>span{color:#f4c542}.note-save{color:#211713}
 .note-save{background:linear-gradient(110deg,#f4c542,#e10613);border-color:#f4c542}
 .site-footer{background:#0d1112;border-color:#ffffff24}
 .footer-brand>span:last-child{color:#fff}.footer-brand small{color:#f4c542}
